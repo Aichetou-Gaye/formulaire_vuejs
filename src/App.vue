@@ -1,47 +1,78 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <form @submit.prevent ="alertUser">
+    <legend>Hello lovely customers! Would you like to benefit from free soft cookies?</legend>
+    <h5>Fill out this form quickly so as not to miss your chance</h5>
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your name" required>
+    <label>Mail Address</label>
+    <input type="email" placeholder="Enter your mail address" required>
+    <label>Phone Number</label>
+    <input type="number" placeholder="Enter your phone number" required>
+    <button>Submit</button>
+  </form>
 </template>
 
+
+<script setup>
+function alertUser() {
+  try {
+  alert("Submitted with succés")
+  throw new Error("Submission Failure")
+  } catch(error) {
+    console.error(error)
+  }
+}
+
+</script>
+
+
 <style scoped>
-header {
-  line-height: 1.5;
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #be6f3a;
+  color: #FFFFFF;
+  padding: 50px;
+  border-radius: 10px;
+  opacity: 0.95;
+  width: 45%;
+  margin: auto;
+}
+label {
+  font-size: 1em;
+  
+}
+input {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0px 20px 0px;
+  border: none;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #000000;
+}
+input::placeholder {
+  color: #000;
+}
+input:focus{
+  background-color: #000000;
+  color: #ffffff;
+  outline: none;
+}
+button {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0px 20px 0px;
+  border: none;
+  color: #ffffff;
+  background-color: #7e5133;
+  font-weight: bolder;
+  font-size: 1em;
+  font-family: "Montserrat Alternates", sans-serif;
+  cursor: pointer;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+button:hover {
+  color: #7e5133;
+  background-color: #ffffff;
 }
 </style>
